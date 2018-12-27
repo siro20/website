@@ -15,6 +15,7 @@ after_success:
   - find /tmp/build -mindepth 1 -type d -exec echo -mkdir {} \; >> /tmp/batchfile
   - sed -i -e "s/\/tmp\/build/www/g" /tmp/batchfile
   - echo "cd www" >> /tmp/batchfile
+  - echo "lcd /tmp/build" >> /tmp/batchfile
   - find /tmp/build -type f -exec echo put {} {} \; >> /tmp/batchfile
   - sed -i -e "s/\/tmp\/build\///g" /tmp/batchfile
   - cat /tmp/batchfile
