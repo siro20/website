@@ -14,7 +14,6 @@ script:
   - sphinx-build . /tmp/build
 
 after_success:
-- echo "${SSH_PRIV_KEY}" | base64 --decode >/tmp/sftp_rsa
-- sftp -v -oIdentityFile=/tmp/sftp_rsa ${SSH_USER_NAME}@${SSH_DEPLOY_HOST} <<EOF
-put -r /tmp/build /
-EOF
+  - echo "${SSH_PRIV_KEY}" | base64 --decode >/tmp/sftp_rsa
+  - echo "put -r /tmp/build /" > /tmp/batchfile
+  - sftp -v -oIdentityFile=/tmp/sftp_rsa ${SSH_USER_NAME}@${SSH_DEPLOY_HOST} -b /tmp/batchfile
