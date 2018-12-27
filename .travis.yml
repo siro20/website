@@ -12,7 +12,7 @@ script:
 after_success:
   - echo "${SSH_PRIV_KEY}" | base64 --decode >/tmp/sftp_rsa
   - chmod 600 /tmp/sftp_rsa
-  - find /tmp/build -mindepth 1 -type d -exec echo mkdir {} \; >> /tmp/batchfile
+  - find /tmp/build -mindepth 1 -type d -exec echo -mkdir {} \; >> /tmp/batchfile
   - sed -i -e "s/\/tmp\/build/www/g" /tmp/batchfile
   - echo "cd www" >> /tmp/batchfile
   - find /tmp/build -type f -exec echo put {} {} \; >> /tmp/batchfile
