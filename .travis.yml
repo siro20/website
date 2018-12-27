@@ -11,6 +11,7 @@ script:
 
 after_success:
   - echo "${SSH_PRIV_KEY}" | base64 --decode >/tmp/sftp_rsa
+  - chmod 600 /tmp/sftp_rsa
   - echo "rm -r /" > /tmp/batchfile
   - find /tmp/build -type d -exec echo mkdir {} \;|sed -e "s/build\///g" >> /tmp/batchfile
   - find /tmp/build -type f -exec echo put {} {} \;|sed -e "s/build\///g" >> /tmp/batchfile
