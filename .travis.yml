@@ -1,0 +1,20 @@
+language: python
+python:
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+# command to run tests
+script:
+  - mkdir /tmp/build
+  - sphinx-build . /tmp/build
+
+after_success:
+- echo "${SSH_PRIV_KEY}" | base64 --decode >/tmp/sftp_rsa
+- sftp -v -oIdentityFile=/tmp/sftp_rsa ${SSH_USER_NAME}@${SSH_DEPLOY_HOST} <<EOF
+put -r /tmp/build /
+EOF
