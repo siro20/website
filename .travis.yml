@@ -14,4 +14,4 @@ after_success:
   - echo "rm -r /" > /tmp/batchfile
   - find /tmp/build -type d -exec echo mkdir {} \;|sed -e "s/build\///g" >> /tmp/batchfile
   - find /tmp/build -type f -exec echo put {} {} \;|sed -e "s/build\///g" >> /tmp/batchfile
-  - sftp -v -oIdentityFile=/tmp/sftp_rsa ${SSH_USER_NAME}@${SSH_DEPLOY_HOST} -b /tmp/batchfile
+  - sftp -b /tmp/batchfile -v -oIdentityFile=/tmp/sftp_rsa ${SSH_USER_NAME}@${SSH_DEPLOY_HOST}
