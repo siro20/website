@@ -12,7 +12,8 @@ script:
 after_success:
   - echo "${SSH_PRIV_KEY}" | base64 --decode >/tmp/sftp_rsa
   - chmod 600 /tmp/sftp_rsa
-  - find /tmp/build -type d -exec echo mkdir {} \;|sed -e "s/\/tmp\build\///g" >> /tmp/batchfile
-  - find /tmp/build -type f -exec echo put {} {} \;|sed -e "s/\/tmp\build\///g" >> /tmp/batchfile
+  - find /tmp/build -type d -exec echo mkdir {} \; >> /tmp/batchfile
+  - find /tmp/build -type f -exec echo put {} {} \; >> /tmp/batchfile
+  - sed -i -e "s/\/tmp\/build/./g" /tmp/batchfile
   - cat /tmp/batchfile
   - sftp -b /tmp/batchfile -v -oStrictHostKeyChecking=no -oIdentityFile=/tmp/sftp_rsa ${SSH_USER_NAME}@${SSH_DEPLOY_HOST}
