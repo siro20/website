@@ -1,5 +1,4 @@
 # Welcome to 4q8.de
 
-This site is under construction.
-
+* [Wind energy harvesting](windpower.md)
 * [Impressum](impressum.md)
