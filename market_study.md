@@ -37,4 +37,15 @@ List of currently available PV panels and it's maximum ratings.
 +-------------------------+----------+------+------+
 ```
 
+## Graphical representation
 
+![Graphical representation of above table](market_study_VW.png)
+
+## Result
+1. Modules below 200W have a low open collector voltage of 22V.
+2. Modules between 200W and 300W have a voltage of around 40V.
+3. Modules starting at 250W have a very high open collector voltage of 70V.
+
+As power converters above 300W are difficult to build, and modules below
+200W aren't worth attaching an expensive converter, the MPPT boost converter
+will target 40V open collector voltage modules.

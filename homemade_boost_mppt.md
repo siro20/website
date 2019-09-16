@@ -11,7 +11,8 @@ The schematics can be found on [GitHub].
 
 The [market analysis] shows the overal used voltage and current on currently
 available PV panels. The homemade PV boost converter should cover
-about 90% of the panels available.
+about 90% of the panels available. The study showed that modules in the range
+of 200W-300W with 40Voc should be used.
 
 [market analysis]: market_study.md
 [GitHub]: https://github.com/siro20/mppt
