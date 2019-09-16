@@ -1,6 +1,6 @@
 # Homemade PV panel boost converter with MPPT
 
-## Market study
+## Market analysis
 List of currently available PV panels and it's maximum ratings.
 
 ```eval_rst
